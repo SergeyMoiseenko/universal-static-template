@@ -1,0 +1,15 @@
+#node
+node_modules
+
+#VSCode
+.vscode
+
+# File with environment variables
+.env
+
+# build and dist folders
+build
+dist
+
+# yarn
+yarn-error.log

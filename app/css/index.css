@@ -1,0 +1,9 @@
+
+body {
+  background-color: #f964b8;
+  color: #4e1d8a;
+}
+
+div {
+  background: linear-gradient(0deg, #fff5f5 0%, #fe8b8b 50%, #ff4949 51%,#d50000 100%);
+}
