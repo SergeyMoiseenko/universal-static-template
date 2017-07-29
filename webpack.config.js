@@ -57,13 +57,27 @@ module.exports = (env) => {
 
   const cssConfig = {
     test: /\.css$/,
-    include: [path.resolve(process.cwd(), "app")],
+    include: [path.resolve(process.cwd(), "app", "css")],
     use: ifProd(
       ExtractTextPlugin.extract({
         fallback: "style-loader",
-        use: cssLoaders
+        use: cssLoaders,
+        publicPath: "css/"
       }),
-      cssLoaders)
+      cssLoaders
+    )
+  }
+
+  const cssLibs = {
+    test: /\.css$/,
+    include: [path.resolve(CWD, "node_modules"), path.resolve(CWD, "app", "vendors")],
+    use: ifProd(
+      ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        use: ["css-loader?sourceMap=false&minimize=false"]
+      }),
+      [ "style-loader", "css-loader?sourceMap=false&minimize=false"]
+    )
   }
 
   return {
@@ -89,6 +103,7 @@ module.exports = (env) => {
       rules: [
         jsModules,
         cssConfig,
+        cssLibs,
         {
           /*
            * That template can be used for extracting html (add html to entry point)
@@ -104,14 +119,27 @@ module.exports = (env) => {
         },
         {
           test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          include: [path.resolve(CWD, "app", "css")], 
           loader: "url-loader?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]"
         },
         {
+          test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          include: [path.resolve(CWD, "node_modules"), path.resolve(CWD, "app", "vendors")],
+          loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]" // FIXME: Something wrong with paths  in prod
+        },
+        {
           test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          include: [path.resolve(CWD, "app", "css")],
           loader: "file-loader?name=fonts/[path][name].[ext]"
         },
         {
+          test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          include: [path.resolve(CWD, "node_modules"), path.resolve(CWD, "app", "vendors")],
+          loader: "file-loader?name=fonts/[name].[ext]" // FIXME: Something wrong with paths in prod
+        },
+        {
           test: /\.(jpe?g|png|gif)$/,
+          include: [path.resolve(CWD, "app", "img"), path.resolve(CWD, "app", "css")],
           loader: 'file-loader?name=[path][name].[ext]'
         }
       ]
@@ -120,8 +148,8 @@ module.exports = (env) => {
     plugins: removeEmpty([
       new StyleLintPlugin({
         configFile: path.resolve(CWD, ".stylelintrc"),
-        failOnError: true,
-        files: ['**/*.css'],
+        failOnError: false,
+        files: ["css/**/*.css"],
         quiet: false,
         formatter: stylelintFormatter
       }),

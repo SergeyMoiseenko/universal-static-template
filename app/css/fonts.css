@@ -1,0 +1,9 @@
+@font-face {
+			font-family: "BadScriptRegular";
+			src: url("../vendors/fonts/BadScriptRegular/BadScriptRegular.eot");
+			src: url("../vendors/fonts/BadScriptRegular/BadScriptRegular.eot?#iefix")format("embedded-opentype"),
+			url("../vendors/fonts/BadScriptRegular/BadScriptRegular.woff") format("woff"),
+			url("../vendors/fonts/BadScriptRegular/BadScriptRegular.ttf") format("truetype");
+			font-style: normal;
+			font-weight: normal;
+	}

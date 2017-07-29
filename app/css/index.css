@@ -1,9 +1,27 @@
+/* stylelint-disable-next-line */
+@import-normalize;
 
-body {
-  background-color: #f964b8;
-  color: #4e1d8a;
+.top_header {
+  background-color: #050C0E;  
 }
 
-div {
-  background: linear-gradient(0deg, #fff5f5 0%, #fe8b8b 50%, #ff4949 51%,#d50000 100%);
+.site_name {
+  color: #FFC84B;
+  font: 18pt BadScriptRegular;
+  vertical-align: middle;
+}
+
+.top_header i{
+  color: #00C7F6;
+  vertical-align: initial;
+}
+
+.main {
+  background-color: #EAF3F5;
+  margin-top: 10px;
+}
+.quest {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

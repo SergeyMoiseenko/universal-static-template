@@ -11,7 +11,7 @@
     "build:prod": "webpack -p --env.prod"
   },
   "dependencies": {
-    "style-loader": "^0.18.2"
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -29,6 +29,7 @@
     "html-webpack-plugin": "^2.29.0",
     "postcss-loader": "^2.0.6",
     "postcss-normalize": "^4.0.0",
+    "style-loader": "^0.18.2",
     "stylelint": "^8.0.0",
     "stylelint-config-recommended": "^1.0.0",
     "stylelint-formatter-pretty": "^1.0.3",
