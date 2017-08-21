@@ -12,3 +12,5 @@
 1. `yarn install` или `yarn` или `npm install`
 2. `yarn start` или `npm start`
 3. Code!
+
+Сайт доступен по адресу `http://localhost:3000`.
